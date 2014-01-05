@@ -1,8 +1,14 @@
--- | Main entry point to the application.
 module Main where
 
--- | The main entry point.
+import Calculator.AST
+import Calculator.Interpreter
+import Calculator.Parser
+
 main :: IO ()
 main = do
-    putStrLn "Welcome to FP Haskell Center!"
-    putStrLn "Have a good day!"
+    interact calc
+    putStrLn ""
+
+calc s = case parseExp s of
+    Left e -> show e
+    Right exp -> show $ eval exp
