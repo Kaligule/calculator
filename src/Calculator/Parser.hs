@@ -30,7 +30,6 @@ table = [ [binary "*" EMul AssocLeft, binary "/" EDiv AssocLeft ]
         , [binary "+" EAdd AssocLeft, binary "-" ESub AssocLeft ]
         ]
 
-prefix  name fun = Prefix  (do { reservedOp name; return fun })
 binary  name fun = Infix   (do { reservedOp name; return fun })
 
 expr :: Parser Exp
