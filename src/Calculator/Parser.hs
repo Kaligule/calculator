@@ -18,8 +18,11 @@ lexer = P.makeTokenParser (haskellStyle
                                }
                           )
 
+natural :: Parser Integer
 natural    = P.natural lexer
+parens :: Parser Exp -> Parser Exp
 parens     = P.parens lexer
+reservedOp :: String -> Parser ()
 reservedOp = P.reservedOp lexer
 
 term =  parens expr
